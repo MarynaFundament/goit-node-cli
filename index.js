@@ -1,5 +1,4 @@
-import * as Contacts from "./contacts.js "
-
+import * as Contacts from "./contacts.js"
 
 import { program } from "commander";
 program
@@ -17,28 +16,22 @@ const options = program.opts();
 async function invokeAction({ action, id, name, email, phone }) {
   switch (action) {
     case "list":
-      const contacts = await Contacts.listContacts();
-      return contacts;
+      console.table(await Contacts.listContacts());
       break;
 
     case "get":
-      const contact = await Contacts.getContactById(id);
-      return contact;
+      console.log([await Contacts.getContactById(id)]);
       break;
 
     case "add":
-      const addedContact = await Contacts.addContact({ name, email, phone});
-      return addedContact;
+      console.log([await Contacts.addContact(name, email, phone)]);
       break;
 
     case "remove":
-      const removedContact = await Contacts.removeContact(id);
-      return removedContact;
+      console.log([await Contacts.removeContact(id)]);
       break;
 
     default:
       console.warn("\x1B[31m Unknown action type!");
   }
 }
-
-invokeAction(options);

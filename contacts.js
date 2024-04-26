@@ -17,8 +17,8 @@ function writeContacts(contacts){
 
 async function listContacts() {
   const contacts  = await readContacts()
-  console.table(contacts);
 
+  return contacts
   }
   
   async function getContactById(contactId) {
@@ -29,11 +29,9 @@ async function listContacts() {
 
     if (typeof contact === "undefined"){
         return null
-    } else {
-       console.log(contact)
     }
 
-  
+    return contact
   }
   
   async function removeContact(contactId) {
@@ -55,7 +53,7 @@ async function listContacts() {
   
   async function addContact(name, email, phone) {
     const contacts = await readContacts();
-    const newContact = { name, email, phone , id: crypto.randomUUID() };
+    const newContact = { name, email, phone, id: crypto.randomUUID() };
     contacts.push(newContact);
     await writeContacts(contacts);
     return newContact;
