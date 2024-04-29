@@ -20,19 +20,19 @@ async function invokeAction({ action, id, name, email, phone }) {
       break;
 
     case "get":
-      console.log([await Contacts.getContactById(id)]);
+      console.log(await Contacts.getContactById(id));
       break;
 
     case "add":
-      console.log([await Contacts.addContact(name, email, phone)]);
+      console.log(await Contacts.addContact(name, email, phone));
       break;
 
     case "remove":
-      console.log([await Contacts.removeContact(id)]);
+      console.log(await Contacts.removeContact(id));
       break;
 
     default:
-      console.warn("\x1B[31m Unknown action type!");
+      console.warn(" Unknown action !");
   }
 }
 
